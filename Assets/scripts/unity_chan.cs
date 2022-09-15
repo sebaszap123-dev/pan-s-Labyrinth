@@ -17,14 +17,20 @@ public class unity_chan : MonoBehaviour
     void Update()
     {
         Vector3 orientation = Input.acceleration;
-        orientation = Quaternion.Euler(90,0,0) * orientation;
+        orientation = Quaternion.Euler(90, 0, 0) * orientation;
         rig.AddForce(orientation * velocidad * Time.deltaTime);
     }
-    // private void OnCollision(Collision collision){
-    //     if(collision.gameObject.CompareTag("Salida")){
-    //         gameManager.Wins();
-    //     } else if(collision.gameObject.CompareTag("Pared")){
-    //         gameManager.RestarPuntos();
-    //     }
-    // }
+    public void OnCollision(Collision tarjet)
+    {
+        if (tarjet.gameObject.tag == "Salida")
+        {
+            Debug.LogError("Could not find the main player. Ensure it has the player tag set.");
+
+            gameManager.Wins();
+        }
+        else if (tarjet.gameObject.CompareTag("Pared"))
+        {
+            gameManager.RestarPuntos();
+        }
+    }
 }
