@@ -31,12 +31,12 @@ public class GameManager : MonoBehaviour
 
     private void Muerto()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(2);
     }
     public void Wins()
     {
         winsGame.text = "Victoria";
-        Debug.LogError("Could not find the main player. Ensure it has the player tag set.");
+        SceneManager.LoadScene(3);
     }
     public void RestarPuntos()
     {
